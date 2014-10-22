@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<!--
+	Miniport by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+	<head>
+		<title>Doday</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<!--<meta name="description" content="" /> -->
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/jquery.simplemodal-1.4.4.js"></script>
+
+
+		<link rel="stylesheet" href="css/skel.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-desktop.css" />
+		<link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
+
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<style>
+		#map_canvas {
+        width: 500px;
+        height: 400px;
+		}
+
+		#run_modal {
+			display:none;
+		}
+		#bike_modal {
+			display:none;
+		}
+		#lift_modal {
+			display:none;
+		}
+		#rand_modal {
+			display:none;
+		}
+
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script>
+			function initialize() {
+			var mapCanvas = document.getElementById('map_canvas');
+			var mapOptions = {
+			center: new google.maps.LatLng(44.5403, -78.5463),
+			zoom: 8,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			var map = new google.maps.Map(mapCanvas, mapOptions)
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		<style>
+			.hidden{
+			display:none;
+			}
+
+			.unhidden{
+				display:block;
+			}
+		</style>
+
+
+		<script type="text/javascript">
+			function unhide(divID, otherDivId, thirdID) {
+			var item = document.getElementById(divID);
+			if (item) {
+				item.className=(item.className=='hidden')?'unhidden':'hidden';
+			}
+			document.getElementById(otherDivId).className = 'hidden';
+			document.getElementById(thirdID).className = 'hidden';
+		}
+		</script>
+
+
+<script>
+		$(function() {
+    var LegArmAr= [];
+	LegArmAr[0] = "Squat";
+	LegArmAr[1] = "Leg Press";
+	LegArmAr[2] = "Deadlift";
+	LegArmAr[3] = "Crunches";
+	LegArmAr[4] = "Hip Abdductors";
+	LegArmAr[5] = "Back Extension";
+	LegArmAr[6] = "Lunges";
+	LegArmAr[7] = "Chest Fly";
+	LegArmAr[8] = "Push Ups";
+	LegArmAr[9] = "Biceps Curls";
+	LegArmAr[10] = "Upright Rows";
+	LegArmAr[11] = "Pull Ups";
+	LegArmAr[12] = "Bench Press";
+    var rand = "";
+
+    var rand = LegArmAr[Math.floor(Math.random() * LegArmAr.length)];
+
+
+       //We add vPool HTML content to #myDIV
+       $('#rand_modal').html(rand);
+});
+</script>
+
+
+	</head>
+	<body>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="container">
+					<li><a href="#top"></a></li>
+
+				</ul>
+			</nav>
+
+		<!-- Home -->
+			<div class="wrapper style1 first">
+				<article class="container" id="top">
+					<div class="row">
+						<div class="8u">
+							<header>
+								<h1>What do you want to do <strong>today</strong>?</h1>
+							</header>
+
+						</div>
+					</div>
+				</article>
+			</div>
+
+		<!-- Options -->
+			<div class="wrapper style3">
+				<article id="options">
+					<header>
+						<h2>Here are options that you can choose from:</h2>
+					</header>
+					<div class="container">
+						<div class="row">
+							<div class="4u">
+								<section class="box style1">
+									<span class="icon featured fa-heart"></span>
+										<!--<h3><a href="javascript:unhide('running','bike', 'lift')"> Running </a></h3>-->
+											<!--<h3><a href='#basic-modal-content' class='basic'>Running</a></h3>-->
+											<div id='running'>
+												<h3><a href='#' class='run_button'>Running</a></h3>
+											</div>
+								</section>
+							</div>
+							<div class="4u">
+								<section class="box style1">
+									<span class="icon featured fa-bicycle"></span>
+									<!--<h3><a href = "#">Bicycle</a></h3>-->
+											<div id='biking'>
+												<h3><a href='#' class='bike_button'>Bicycle</a></h3>
+											</div>
+								</section>
+							</div>
+							<div class="4u">
+								<section class="box style1">
+									<span class="icon featured fa-child"></span>
+									<!--<h3><a href = "#">Legs/Arms</a></h3>-->
+											<div id='lifting'>
+												<h3><a href='#' class='lift_button'>Arms & Legs</a></h3>
+											</div>
+								</section>
+							</div>
+						</div>
+						</br>
+							<!--hidden stuff
+						    <div id="running" class="hidden">
+								<p>Running.</p>
+
+							</div>
+							-->
+
+
+						</br>
+						<h3>Can't decide?</br></h3>
+						<div id='randoming'>
+							<input type='button' name='basic' value='Randomly Generate Something For Me To Do' class='rand_button'/>
+						</div>
+						<!-- <a href="#randomlydo" class="button small scrolly">Randomly Generate Something For Me To Do</a> -->
+					</div>
+					</br>
+					</div>
+					<footer>
+						<ul id="copyright">
+						<center>
+							<p>&copy; GOONSQUAD. All rights reserved.</p>
+							<p>Designed by: Helen Chac, Donna Chow, Carl Pang, James Tam & Nathan Truong</p>
+						</center>
+						</ul>
+					</footer>
+				</article>
+			</div>
+
+			</div>
+
+	<div id='content'>
+	<!--
+		<div id='basic-modal'>
+			<h3>Basic Modal Dialog</h3>
+			<p>A basic modal dialog with minimal styling and no additional options. There are a few CSS properties set internally by SimpleModal, however, SimpleModal relies mostly on style options and/or external CSS for the look and feel.</p>
+			<input type='button' name='basic' value='Demo' class='basic'/> or <a href='#' class='basic'>Demo</a>
+		</div>
+			-->
+
+		<!-- modal content -->
+		<div id="run_modal">
+			<p>It's a nice day to go running!</p>
+			<p>Why don't you go running at the arboretum? </p>
+
+		<!--
+
+			<h3>Basic Modal Dialog</h3>
+			<p>For this demo, SimpleModal is using this "hidden" data for its content. You can also populate the modal dialog with an AJAX response, standard HTML or DOM element(s).</p>
+			<p>Examples:</p>
+			<p><code>$('#basicModalContent').modal(); // jQuery object - this demo</code></p>
+			<p><code>$.modal(document.getElementById('basicModalContent')); // DOM</code></p>
+			<p><code>$.modal('&lt;p&gt;&lt;b&gt;HTML&lt;/b&gt; elements&lt;/p&gt;'); // HTML</code></p>
+			<p><code>$('&lt;div&gt;&lt;/div&gt;').load('page.html').modal(); // AJAX</code></p>
+
+			<p><a href='http://www.ericmmartin.com/projects/simplemodal/'>More details...</a></p>
+		-->
+		</div>
+
+		<div id="bike_modal">
+				<p>Wanna go biking? You should go here:</p>
+				<img src="images/bike.jpg" style="width:75%;height:75%" />
+		</div>
+
+
+		<div id="lift_modal">
+				<p>Try lifting weights, yo</p>
+		</div>
+
+		<div id="rand_modal">
+				<script type="text/javascript">function();</script>
+		</div>
+
+		<!-- preload the images -->
+		<div style='display:none'>
+			<img src='img/basic/x.png' alt='' />
+		</div>
+	</div>
+	<script>
+		jQuery(function ($) {
+		// Load dialog on page load
+		//$('#basic-modal-content').modal();
+
+		// Load dialog on click
+			$('.run_button').click(function (e) {
+				$('#run_modal').modal();
+
+				return false;
+			});
+
+			$('.bike_button').click(function (e) {
+				$('#bike_modal').modal();
+
+				return false;
+			});
+
+
+			$('.lift_button').click(function (e) {
+				$('#lift_modal').modal();
+
+				return false;
+			});
+
+			$('.rand_button').click(function (e) {
+				$('#rand_modal').modal();
+
+				return false;
+			});
+		});
+	</script>
+
+	</body>
+
+</html>
